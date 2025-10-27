@@ -3,6 +3,7 @@ import { useState } from 'preact/hooks';
 import { useRef } from 'preact/hooks';
 
 function App() {
+  const [username, setUsername] = useState(localStorage.getItem('username') || '');
   const [messages, setMessages] = useState([]);
   const textareaRef = useRef(null);
   const chatHistoryRef = useRef(null);
@@ -15,7 +16,7 @@ function App() {
 
     const newMessage = {
       id: Date.now(),
-      username: 'You',
+      username: username,
       text: text.trim(),
       language: 'en',
       timestamp: new Date().toLocaleTimeString()
@@ -28,6 +29,24 @@ function App() {
       chatHistoryRef.current.scrollTop = chatHistoryRef.current.scrollHeight;
     }, 0);
   };
+
+  if (!localStorage.getItem('username')) {
+    return (
+      <div className="login">
+        <div className="login-card">
+          <h2>Enter your username</h2>
+          <input type="text" id="username" placeholder="Username" />
+          <button onClick={() => {
+            const username = document.getElementById('username').value;
+            if (username.trim() !== '') {
+              localStorage.setItem('username', username.trim());
+              window.location.reload();
+            }
+          }}>Get in</button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className='chat-container'>
