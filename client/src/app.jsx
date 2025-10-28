@@ -1,6 +1,7 @@
 import './styles.css';
 import { useState } from 'preact/hooks';
 import { useRef } from 'preact/hooks';
+import Message from './components/Message.jsx';
 
 function App() {
   const [username, setUsername] = useState(localStorage.getItem('username') || '');
@@ -52,9 +53,7 @@ function App() {
     <div className='chat-container'>
       <div className="chat-history" ref={chatHistoryRef}>
         {messages.map(msg => (
-          <div key={msg.id} className="message">
-            <div className="message-text">{msg.text}</div>
-          </div>
+          <Message key={msg.id} text={msg.text} sender={msg.username} />
         ))}
       </div>
       <form className="chat-input" onSubmit={handleSubmit}>

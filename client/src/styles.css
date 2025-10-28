@@ -117,14 +117,54 @@ body {
     font-size: calc(0.5vw + 1vh);
 }
 
-.chat-history .message {
-    width: fit-content;
-    max-width: 70%;
-    margin: 5px;
-    padding: 10px 15px;
-    margin-left: auto;
-    border-radius: 8px;
-    background-color: #023e8a;
+.chat-history .message-container {
+    width: 100%;
+}
+
+.chat-container .message-header {
+    width: 100%;
+}
+
+.message-header small {
+    color: var(--blue-color);
+}
+
+.chat-container .message-body {
+    display: flex;
+    align-items: center;
+}
+
+.message-body div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.message-body div p {
+    padding-left: 15px;
+    border-left: 3px solid var(--blue-color);
+    width: 90%;
+    word-break: break-all;
+}
+
+.message-body div p.message-text {
+    border-left: 3px solid var(--blue-color);
+}
+
+.message-body div p.message-translated {
+    border-left: 3px solid var(--border-glass-color);
+}
+
+.message-body img {
+    display: none;
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.message-body:hover img {
+    display: block;
 }
 
 .chat-container .chat-input {
