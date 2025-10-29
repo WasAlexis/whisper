@@ -1,6 +1,6 @@
 import translateIcon from '../assets/translate.svg';
 
-function Message({ text, sender }) {
+function Message({ text, sender, translatedText }) {
     return (
         <div className="message-container">
             <div className="message-header">
@@ -9,9 +9,8 @@ function Message({ text, sender }) {
             <div className="message-body">
                 <div>
                     <p className="message-text">{text}</p>
-                    <p className='message-translated'>{text}</p>
+                    <p className='message-translated'>{translatedText}</p>
                 </div>
-                <img src={translateIcon} alt="" />
             </div>
         </div>
     )
