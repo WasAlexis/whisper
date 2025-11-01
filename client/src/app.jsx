@@ -82,6 +82,7 @@ function App() {
   return (
     <div className='chat-container'>
       <div className="chat-history" ref={chatHistoryRef}>
+        <h2>Whisper</h2>
         {messages.map(msg => (
           <Message key={msg.id} text={msg.text} 
           sender={msg.username} 

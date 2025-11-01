@@ -5,6 +5,8 @@ import { WebSocketServer } from 'ws';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(express.static('../client/dist'));
+
 const server = http.createServer(app);
 
 const wss = new WebSocketServer({ server });
