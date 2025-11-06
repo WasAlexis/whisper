@@ -61,6 +61,13 @@ function App() {
     }, 0);
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSubmit(e);
+    }
+  };
+
   if (!localStorage.getItem('username')) {
     return (
       <div className="login">
@@ -91,7 +98,8 @@ function App() {
         ))}
       </div>
       <form className="chat-input" onSubmit={handleSubmit}>
-        <textarea placeholder="Type your message..." ref={textareaRef} />
+        <textarea placeholder="Type your message..." ref={textareaRef}
+         onKeyDown={handleKeyDown} />
         <button type='submit'></button>
       </form>
     </div>
