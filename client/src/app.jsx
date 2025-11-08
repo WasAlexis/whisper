@@ -14,7 +14,7 @@ function App() {
   useEffect(() => {
     if (username) {
       const protocol = (window.location.protocol === 'https:') ? 'wss' : 'ws';
-      const ws = new WebSocket(`${protocol}://${window.location.host}`);
+      const ws = new WebSocket(`${protocol}://localhost:3000`);
 
       ws.onopen = () => {
         console.log('Connected to WebSocket server');
@@ -24,6 +24,9 @@ function App() {
       ws.onmessage = (event) => {
         const message = event.data;
         setMessages(prevMessages => [...prevMessages, JSON.parse(message)]);
+        setTimeout(() => {
+          chatHistoryRef.current.scrollTop = chatHistoryRef.current.scrollHeight;
+        }, 0);
       }
 
       ws.onclose = () => {
@@ -100,7 +103,6 @@ function App() {
       <form className="chat-input" onSubmit={handleSubmit}>
         <textarea placeholder="Type your message..." ref={textareaRef}
          onKeyDown={handleKeyDown} />
-        <button type='submit'></button>
       </form>
     </div>
   );
