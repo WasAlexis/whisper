@@ -14,7 +14,7 @@ function App() {
   useEffect(() => {
     if (username) {
       const protocol = (window.location.protocol === 'https:') ? 'wss' : 'ws';
-      const ws = new WebSocket(`${protocol}://localhost:3000`);
+      const ws = new WebSocket(`${protocol}://${window.location.host}`);
 
       ws.onopen = () => {
         console.log('Connected to WebSocket server');
