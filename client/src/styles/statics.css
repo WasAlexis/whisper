@@ -1,0 +1,5 @@
+/* overrides default styles for DOM elements */
+
+:root {
+    color-scheme: light dark;
+}
