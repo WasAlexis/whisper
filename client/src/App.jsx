@@ -1,8 +1,8 @@
+import Router from "./navigation/Router.jsx";
+
 function App() {
   return (
-    <>
-      <h1>Whisper Client</h1>
-    </>
+    <Router />
   );
 }
 
