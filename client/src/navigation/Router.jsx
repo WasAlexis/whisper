@@ -4,7 +4,7 @@ import Chat from "../pages/Chat.jsx";
 function Router() {
     return (
         <Routes>
-            <Route path="/chat" element={<Chat />} />
+            <Route path="/" element={<Chat />} />
         </Routes>
     );
 }
