@@ -5,8 +5,10 @@ import { useState } from 'react';
 
 function Chat() {
     const user = localStorage.getItem('username') || 'Anonymous';
+    const language = localStorage.getItem('language') || 'EN';
     const { messages, sendMessage } = useWebSocket();
     const [inputValue, setInputValue] = useState('');
+
     const handleSendMessage = (e) => {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
@@ -14,11 +16,13 @@ function Chat() {
             if (!text) {
                 return;
             }
+
             const newMessage = {
                 text: text,
                 username: user,
-                language: 'ES'
+                language
             }
+            
             sendMessage(newMessage);
             setInputValue('');
         }
