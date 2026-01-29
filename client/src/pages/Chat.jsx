@@ -12,7 +12,7 @@ function Chat() {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            fetch('/health');
+            fetch(`https://${window.location.host}/health`);
         }, delay);
         return () => clearInterval(interval);
     }, []);
