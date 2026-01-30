@@ -4,7 +4,7 @@ function connectWebSocket() {
   if (!socket) {
     const protocol = window.location.protocol === 'https:' ? 'wss' : 'ws';
     const host = window.location.host;
-    const url = `${protocol}://192.168.1.109:3000`;
+    const url = `${protocol}://${window.location.host}`;
     socket = new WebSocket(url);
   }
 
