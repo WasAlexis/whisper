@@ -1,13 +1,21 @@
 import '../styles/chat.css';
 import Message from '../component/Message/Message.jsx';
 import { useWebSocket } from '../hooks/useWebSocket.js';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function Chat() {
     const user = localStorage.getItem('username') || 'Anonymous';
     const language = localStorage.getItem('language') || 'EN';
     const { messages, sendMessage } = useWebSocket();
     const [inputValue, setInputValue] = useState('');
+    const delay = 10 * 60 * 1000; // 10 minutes
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            fetch('/health');
+        }, delay);
+        return () => clearInterval(interval);
+    }, []);
 
     const handleSendMessage = (e) => {
         if (e.key === 'Enter' && !e.shiftKey) {
